@@ -62,7 +62,7 @@ fi
 
 # List of container and volumes names to check
 VOLUMES=("bloodhound_docker_postgres-data" "bloodhound_docker_neo4j-data")
-CONTAINERS=("bloodhound_docker_app-db_1" "bloodhound_docker_graph-db_1" "bloodhound_docker_bloodhound_1")
+CONTAINERS=("bloodhound_docker-app-db-1" "bloodhound_docker-graph-db-1" "bloodhound_docker-bloodhound-1")
 
 for CONTAINER in "${CONTAINERS[@]}"; do
     # Check if the container is running
@@ -127,7 +127,7 @@ echo "Waiting for the log entry: 'Initial Password Set To'..."
 while ! check_log_entry; do
     sleep 1
 done
-echo 'Password: '$(docker logs bloodhound_docker_bloodhound_1 2>&1 | grep "Initial Password Set To" --color=never | grep -oP '"message":"#\sInitial\sPassword\sSet\sTo:\s+([^#\s]+)\s+#"' --color=never | awk '{print $6}')
+echo 'Password: '$(docker logs bloodhound_docker-bloodhound-1 2>&1 | grep "Initial Password Set To" --color=never | grep -oP '"message":"#\sInitial\sPassword\sSet\sTo:\s+([^#\s]+)\s+#"' --color=never | awk '{print $6}')
 echo ""
 echo "[+] Neo4j's credentials:"
 echo 'Username: neo4j'
