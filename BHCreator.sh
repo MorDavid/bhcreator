@@ -115,6 +115,7 @@ sed -i 's/#bhe_default_admin_last_name=/bhe_default_admin_last_name=BH/' .env
 echo '[+] Editing docker-compose.yml'
 sed -i 's/127.0.0.1:${NEO4J_DB_PORT:-7687}:7687/0.0.0.0:${NEO4J_DB_PORT:-7687}:7687/' docker-compose.yml
 sed -i 's/127.0.0.1:${NEO4J_WEB_PORT:-7474}:7474/0.0.0.0:${NEO4J_WEB_PORT:-7474}:7474/' docker-compose.yml
+sed -i 's/8080/6990/' docker-compose.yml
 sed -i 's/# volumes:/volumes:/' docker-compose.yml
 sed -i 's/#   - .\/bloodhound.config.json:\/bloodhound.config.json:ro/  - .\/bloodhound.config.json:\/bloodhound.config.json:ro/' docker-compose.yml
 echo '[+] docker compose up -d'
